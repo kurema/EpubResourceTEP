@@ -1,0 +1,53 @@
+﻿body {
+  -webkit-writing-mode: vertical-rl;
+  -epub-writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+}
+
+.tcy {
+  -epub-text-combine-horizontal: all;
+  -webkit-text-combine: horizontal;
+  -ms-text-combine-horizontal: all;
+  -webkit-text-combine-horizontal: all;
+  text-combine: horizontal;
+  text-combine-horizontal: all;
+  text-combine-upright: all;
+}
+
+p::before{
+/*  content: "　";*/
+}
+
+p {
+  margin:0;
+  -ms-text-combine-horizontal: digits 4;
+  text-combine-upright: digits 4;
+  text-indent: 1em;
+}
+
+/*
+ol {
+  counter-reset: li;
+}
+*/
+
+ol > li {
+  list-style-type: cjk-ideographic;
+/*  list-style-type: none;*/
+}
+/*
+ol > li::before {
+  counter-increment: li;
+  content: counter(li, katakana) ")";
+  margin-left: 0;
+  -epub-text-combine-horizontal: all;
+  -webkit-text-combine: horizontal;
+  -ms-text-combine-horizontal: all;
+  -webkit-text-combine-horizontal: all;
+  text-combine: horizontal;
+  text-combine-horizontal: all;
+  text-combine-upright: all;
+
+}*/
+

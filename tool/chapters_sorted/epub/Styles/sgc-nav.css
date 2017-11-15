@@ -1,0 +1,23 @@
+nav#landmarks {
+    display:none;
+}
+
+nav#page-list {
+    display:none;
+}
+
+ol {
+    list-style-type: none;
+}
+
+body {
+  -webkit-writing-mode: vertical-rl;
+  -epub-writing-mode: vertical-rl;
+  writing-mode: vertical-rl;
+}
+
+a, a:link, a:visited, a:link, a:active{
+  text-decoration: none;
+  color:black;
+}
+
