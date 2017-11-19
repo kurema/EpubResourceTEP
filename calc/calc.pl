@@ -6,7 +6,7 @@ mkdir "out";
 open(FILE, "> out/start.xhtml");
 print FILE GetHtmlHead();
 print FILE "<p><a href=\"".GetRLink(0)."\">START</a></p>";
-print FILE GetHtmlTail();
+print FILE "</body></html>";
 
 
 my $currentFile=GetRFile(-$MAXNUM+1);
@@ -197,7 +197,7 @@ a, a:link, a:visited, a:link, a:active{
 text-decoration: none !important;
 color:black;
 }
-table td{font-size: 10vw !important;}
+table td{font-size: 10vmin !important;}
 </style></head>
 <body>
 EOS
