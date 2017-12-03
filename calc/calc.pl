@@ -1,5 +1,5 @@
 ﻿$MAXNUM=100;
-$SINGLEFILENUM=100;
+$SINGLEFILENUM=300;
 
 mkdir "out";
 
