@@ -1,6 +1,5 @@
 ﻿$MAXNUM=100;
 $SINGLEFILENUM=100;
-$SUPPORTMINUS=0;#1:Support,0:Not
 
 mkdir "out";
 
@@ -15,7 +14,7 @@ my $currentFile=GetRFile(-$MAXNUM+1);
 open(FILE, "> out/".$currentFile);
 print FILE GetHtmlHead();
 
-for(my($i)=(-$MAXNUM+1)*$SUPPORTMINUS;$i<$MAXNUM;$i++){
+for(my($i)=0;$i<$MAXNUM;$i++){
 if(GetRFile($i) ne $currentFile){
   $currentFile=GetRFile($i);
   print FILE GetHtmlTail();
@@ -59,11 +58,8 @@ EOS
   print FILE  "</tr>\n";
 
   print FILE  "<tr>\n";
-  if($SUPPORTMINUS==1){
-    print FILE  "<td><a href=\"".GetRLink(-$i)."\">±</a></td>\n";
-  }else{
-    print FILE  "<td><a href=\"".GetRLink(int(sqrt($i)))."\">√</a></td>\n";
-  }
+#  print FILE  "<td><a href=\"".GetRLink(-$i)."\">±</a></td>\n";
+  print FILE  "<td></td>\n";
   print FILE  GetNumberKey(0,$i);
   print FILE  "<td colspan=\"2\"><a href=\"".GetRLink($i)."\">＝</a></td>\n";
   print FILE  "</tr>\n";
@@ -103,8 +99,8 @@ my $currentFile=GetOFile($op,-$MAXNUM+1,-$MAXNUM+1);
 open(FILE, "> out/".$currentFile);
 print FILE GetHtmlHead();
 
-for(my($i)=(-$MAXNUM+1)*$SUPPORTMINUS;$i<$MAXNUM;$i++){
-for(my($j)=(-$MAXNUM+1)*$SUPPORTMINUS;$j<$MAXNUM;$j++){
+for(my($i)=0;$i<$MAXNUM;$i++){
+for(my($j)=0;$j<$MAXNUM;$j++){
 if(GetOFile($op,$i,$j) ne $currentFile){
   $currentFile=GetOFile($op,$i,$j);
   print FILE GetHtmlTail();
@@ -156,13 +152,9 @@ EOS
   print FILE  "</tr>\n";
 
   print FILE  "<tr>\n";
-  if($SUPPORTMINUS==1){
-    print FILE  "<td><a href=\"".GetOLink($op,$i,-$j)."\">±</a></td>\n";
-  }else{
-    print FILE  "<td><a href=\"".GetRLink(int(sqrt($result)))."\">√</a></td>\n";
-  }
+  print FILE  "<td></td>\n";
   print FILE  GetNumberKeyOp(0,$op,$i,$j);
-  if(abs($result)<$MAXNUM){
+  if(abs($result)<$MAXNUM && $result>=0){
     print FILE  "<td colspan=\"2\"><a href=\"".GetRLink($result)."\">＝</a></td>\n";
   }else{
     print FILE  "<td colspan=\"2\"><a href=\"#overflow\">＝</a></td>\n";
