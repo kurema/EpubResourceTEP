@@ -159,7 +159,7 @@ EOS
   if($SUPPORTMINUS==1){
     print FILE  "<td><a href=\"".GetOLink($op,$i,-$j)."\">±</a></td>\n";
   }else{
-    print FILE  "<td><a href=\"".GetRLink(int(sqrt($result)))."\">√</a></td>\n";
+    print FILE  "<td><a href=\"".GetOLink($op,$i,int(sqrt($j)))."\">√</a></td>\n";
   }
   print FILE  GetNumberKeyOp(0,$op,$i,$j);
   if(abs($result)<$MAXNUM){
@@ -221,7 +221,11 @@ sub GetRFile{
 
 sub GetRLink{
   my ($num)=@_;
-  return GetRFile($num)."#r".$num;
+  if($SUPPORTMINUS!=1 && $num < 0){
+    return GetRFile($num)."#overflow";
+  }else{
+    return GetRFile($num)."#r".$num;
+  }
 }
 
 sub GetOFile{
@@ -231,5 +235,9 @@ sub GetOFile{
 
 sub GetOLink{
   my($op,$pnum,$cnum)=@_;
-  return GetOFile($op,$pnum,$cnum)."#o$pnum$op$cnum";
+  if($SUPPORTMINUS!=1 && ( $pnum < 0 || $cnum < 0 )){
+    return GetOFile($op,$pnum,$cnum)."#overflow";
+  }else{
+    return GetOFile($op,$pnum,$cnum)."#o$pnum$op$cnum";
+  }
 }
